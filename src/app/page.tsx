@@ -6,20 +6,51 @@ const projects = [
     tag: "React Native, Node.js, SQL, Expo, JavaScript",
     description:
       "Built a full-stack hiring platform to centralize UBC club job postings, with REST APIs, input validation, a normalized PostgreSQL schema on Supabase, RLS policies, and Vercel CI/CD deployment.",
-    href: "https://github.com/ss0ph1/UBC-Club-Hiring-Platform",
+    links: [
+      {
+        label: "Project",
+        href: "https://ubc-club-hiring-platform-s.vercel.app/",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/ss0ph1/UBC-Club-Hiring-Platform",
+      },
+    ],
   },
   {
     title: "InsightUBC",
     tag: "TypeScript, Node.js, Express, REST APIs, Testing",
     description:
       "Implemented a dataset ingestion pipeline and paginated REST API for course and facilities exploration, supporting advanced query operations, async processing, and black-box regression testing.",
+    links: [],
+  },
+  {
+    title: "HoopCoach AI",
+    tag: "AI, Basketball Training, Full-Stack Development",
+    description:
+      "Built an AI-powered basketball coaching app that generates personalized workouts from player goals, available time, skill level, equipment, and feedback.",
+    links: [
+      {
+        label: "Project",
+        href: "https://hoopcoach-ai-frontend.vercel.app/",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/ss0ph1/HoopCoach-AI",
+      },
+    ],
   },
   {
     title: "Planetz Android App",
     tag: "Android, Java, XML, Firebase, JUnit",
     description:
       "Developed a habit-tracking Android application in a 5-person Agile team with registration, search, recommendations, notifications, progress tracking, and 100 percent test coverage on registration and login.",
-    href: "https://github.com/ss0ph1/PlanetZ",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/ss0ph1/PlanetZ",
+      },
+    ],
   },
 ];
 
@@ -307,7 +338,10 @@ export default function Home() {
 
           <div className="grid gap-6 lg:grid-cols-3">
             {projects.map((project, index) => (
-              <article key={project.title} className="panel group rounded-[2rem] p-6 transition duration-300 hover:-translate-y-1">
+              <article
+                key={project.title}
+                className="panel group flex min-h-full flex-col rounded-[2rem] p-6 transition duration-300 hover:-translate-y-1"
+              >
                 <p className="font-mono text-xs uppercase tracking-[0.26em] text-[var(--text-muted)]">
                   Project {String(index + 1).padStart(2, "0")}
                 </p>
@@ -320,16 +354,23 @@ export default function Home() {
                 <p className="mt-6 text-base leading-8 text-[var(--text-soft)]">
                   {project.description}
                 </p>
-                {"href" in project ? (
-                  <a
-                    className="mt-6 inline-flex text-sm font-semibold uppercase tracking-[0.18em] text-[var(--accent)] transition hover:text-[var(--accent-soft)]"
-                    href={project.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View GitHub
-                  </a>
-                ) : null}
+                <div className="mt-auto flex flex-wrap gap-3 pt-6">
+                  {project.links.length > 0 ? (
+                    project.links.map((link) => (
+                      <a
+                        key={`${project.title}-${link.label}`}
+                        className="project-link"
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {link.label}
+                      </a>
+                    ))
+                  ) : (
+                    <span className="project-link project-link-muted">Link coming soon</span>
+                  )}
+                </div>
               </article>
             ))}
           </div>

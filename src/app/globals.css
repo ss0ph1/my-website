@@ -125,6 +125,38 @@ a {
   transform: translateY(-2px);
 }
 
+.project-link {
+  display: inline-flex;
+  min-height: 2.6rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(68, 93, 72, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 248, 241, 0.62);
+  padding: 0.7rem 1rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.project-link:hover {
+  border-color: rgba(94, 48, 35, 0.28);
+  color: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.project-link-muted {
+  border-style: dashed;
+  color: var(--text-muted);
+  opacity: 0.72;
+}
+
 .hobby-photo {
   width: min(22rem, 100%);
   border: 1px solid rgba(0, 21, 36, 0.08);
